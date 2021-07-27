@@ -1,1 +1,1 @@
-alert('github hosted js');
+alert('github hosted javascript');
