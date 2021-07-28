@@ -1,3 +1,4 @@
+alert('begin');
 var d = document;
 navbars = d.getElementsByClassName('navbar_ui_actions');
 if (navbars.length > 0){
