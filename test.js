@@ -6,4 +6,6 @@ if (navbars.length > 0){
   var n = navbars[0];
   let b = document.createElement("button");
   n.appendChild(b);
+} else {
+  alert('no navbar');
 }
