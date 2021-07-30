@@ -63,6 +63,5 @@ function get_data() {
             const field = fields[i];
             data[field.name] = getval(d, field.id)
         }
-    console.log(data)
     return data;
 }
