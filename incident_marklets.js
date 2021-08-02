@@ -36,19 +36,17 @@ function click_button(d, label='Save') {
     }
 }
 
-function setSelectBoxByText(eid, etxt) {
-    var eid = document.getElementById(eid);
-    for (var i = 0; i < eid.options.length; ++i) {
-        if (eid.options[i].text === etxt)
-            eid.options[i].selected = true;
+function setSelectBoxByText(el, txt) {
+    for (var i = 0; i < el.options.length; ++i) {
+        if (el.options[i].text === txt)
+            el.options[i].selected = true;
     }
 }
 
-function setSelectBoxByValue(eid, value) {
-    var eid = document.getElementById(eid);
-    for (var i = 0; i < eid.options.length; ++i) {
-        if (eid.options[i].value === value)
-            eid.options[i].selected = true;
+function setSelectBoxByValue(el, value) {
+    for (var i = 0; i < el.options.length; ++i) {
+        if (el.options[i].value === value)
+            el.options[i].selected = true;
     }
 }
 
