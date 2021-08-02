@@ -17,20 +17,38 @@ function get_document() {
  *
  * @param {*} d document
  */
-function get_save_button(d) {
+function get_button(d, value = 'Save') {
     buttons = d.getElementsByTagName('button')
+    console.log(buttons.length);
     for (let i = 0; i < buttons.length; i++) {
         const btn = buttons[i];
-        if (btn.value == 'Save') {
+        console.log(btn.value);
+        if (btn.value == value) {
             return btn;
         }
     }
 }
 
-function save_form(d) {
-    save_bt = get_save_button(d);
+function click_button(d, label='Save') {
+    save_bt = get_button(d, label);
     if (save_bt) {
         save_bt.click(); 
+    }
+}
+
+function setSelectBoxByText(eid, etxt) {
+    var eid = document.getElementById(eid);
+    for (var i = 0; i < eid.options.length; ++i) {
+        if (eid.options[i].text === etxt)
+            eid.options[i].selected = true;
+    }
+}
+
+function setSelectBoxByValue(eid, value) {
+    var eid = document.getElementById(eid);
+    for (var i = 0; i < eid.options.length; ++i) {
+        if (eid.options[i].value === value)
+            eid.options[i].selected = true;
     }
 }
 
@@ -45,7 +63,8 @@ function bmk_timer_expired() {
 
         //vérifie que l'incident est bien on hold avec un timer exprired
         if (status_combo.value == 4 && onhold_reason_combo.value == 9) {
-            status_combo.value = -1; //update required
+            setSelectBoxByValue(status_combo, -1) //set state to update required
+
             comment = d.getElementById('activity-stream-comments-textarea');
             comment.value =  `
             SENDER : FR.IncidentMgmt.SNA.Proc.Inc.Manage
@@ -53,7 +72,7 @@ function bmk_timer_expired() {
             please update this incident
             `;
 
-            save_form(d);
+            click_button(d, 'Save');
         }
 
     }
@@ -82,7 +101,7 @@ function bmk_sapmon_autoclose() {
             `;
 
             //save it
-            save_form(d);
+            click_button(d, 'Save');
         } else {
             alert("cet incident n'a pas été ouvert par le monitoring");
         }
